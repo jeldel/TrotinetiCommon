@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TrotinetiZajednicki:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TrotinetiZajednicki_jar</output-path>
+    <root id="archive" name="TrotinetiZajednicki.jar">
+      <element id="module-output" name="TrotinetiZajednicki" />
+    </root>
+  </artifact>
+</component>
