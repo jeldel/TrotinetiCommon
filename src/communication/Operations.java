@@ -23,4 +23,7 @@ public class Operations {
     public static final int GET_ALL_OSOBE_BY_BROJ_LK = 16;
     public static final int ADD_ALL_VOZNJE = 17;
 
+    public static final int UPDATE_KORISNIK = 18;
+    public static final int UPDATE_TROTINET = 19;
+
 }
