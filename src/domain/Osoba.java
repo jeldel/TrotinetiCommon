@@ -1,8 +1,11 @@
 package domain;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class Osoba implements Serializable {
+public class Osoba extends AbstractDomainObject {
 
     private Long brojLicneKarte;
     private String ime;
@@ -48,5 +51,59 @@ public class Osoba implements Serializable {
                 ", prezime='" + prezime + '\'' +
                 ", brojLicneKarte=" + brojLicneKarte +
                 '}';
+    }
+
+    @Override
+    public String nazivTabele() {
+        return " osoba ";
+    }
+
+    @Override
+    public String alijas() {
+        return " o ";
+    }
+
+    @Override
+    public String join() {
+        return "";
+    }
+
+    @Override
+    public ArrayList<AbstractDomainObject> vratiListu(ResultSet rs) throws SQLException {
+        ArrayList<AbstractDomainObject> lista = new ArrayList<>();
+
+        while (rs.next()) {
+            Osoba o = new Osoba(rs.getLong("brojLicneKarte"),
+                    rs.getString("ime"),
+                    rs.getString("prezime"));
+
+            lista.add(o);
+        }
+        return lista;
+    }
+
+    @Override
+    public String koloneZaInsert() {
+        return " (brojLicneKarte, ime, prezime) ";
+    }
+
+    @Override
+    public String uslov() {
+        return "brojLicneKarte = " + brojLicneKarte;
+    }
+
+    @Override
+    public String vrednostiZaInsert() {
+        return brojLicneKarte + ",'" + ime + "', '" + prezime + "' ";
+    }
+
+    @Override
+    public String vrednostiZaUpdate() {
+        return "";
+    }
+
+    @Override
+    public String uslovZaSelect() {
+        return "WHERE brojLicneKarte = " + brojLicneKarte;
     }
 }
