@@ -105,6 +105,6 @@ public class Trotinet extends AbstractDomainObject{
 
     @Override
     public String uslovZaSelect() {
-        return "WHERE trotinetID = " + trotinetID;
+        return "WHERE vrstaTrotineta = '" + vrstaTrotineta + "'";
     }
 }

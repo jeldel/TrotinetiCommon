@@ -3,10 +3,22 @@ package domain;
 import java.io.Serializable;
 
 public class Cenovnik implements Serializable {
+    Long cenovnikID;
+    double cenaPoSatu = 40;
+    double pocetnaCena;
+
+    public Cenovnik() {
+    }
+
+    public Cenovnik(Long cenovnikID, double cenaPoSatu, double pocetnaCena) {
+        this.cenovnikID = cenovnikID;
+        this.cenaPoSatu = cenaPoSatu;
+        this.pocetnaCena = pocetnaCena;
+    }
 
     private double vratiCenuPoTipu(Trotinet t) {
         VrstaTrotinetaEnum vrsta = t.getVrstaTrotineta();
-        double pocetnaCena;
+
         switch (vrsta) {
             case Sharp:
                 pocetnaCena = 80;
@@ -33,8 +45,14 @@ public class Cenovnik implements Serializable {
     }
 
     public double getCenaPoSatu() {
-        double cenaPoSatu = 40;
         return cenaPoSatu;
     }
 
+    public Long getCenovnikID() {
+        return cenovnikID;
+    }
+
+    public void setCenovnikID(Long cenovnikID) {
+        this.cenovnikID = cenovnikID;
+    }
 }
